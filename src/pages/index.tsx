@@ -17,7 +17,7 @@ export default function Home() {
   }, []);
 
   const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    await console.log(container);
+     console.log(container);
   }, []);
   
 
@@ -158,7 +158,7 @@ export default function Home() {
               More Algorithms will be coming soon!!
             </p>
           </div>
-          <Link href="/sorting">
+          <Link href="/selection">
           <div className='w-48'>
             <Image src={Sorting} alt="Sorting" />
             <h4 className='text-white text-xl text-center'>Sorting</h4>
