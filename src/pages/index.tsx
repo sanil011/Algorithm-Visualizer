@@ -158,12 +158,26 @@ export default function Home() {
               More Algorithms will be coming soon!!
             </p>
           </div>
+          <div className='flex justify-between'>
           <Link href="/selection">
           <div className='w-48'>
             <Image src={Sorting} alt="Sorting" />
-            <h4 className='text-white text-xl text-center'>Sorting</h4>
+            <h4 className='text-white text-xl text-center'>Selection</h4>
           </div>
           </Link>
+          <Link href="/quick">
+          <div className='w-48'>
+            <Image src={Sorting} alt="Sorting" />
+            <h4 className='text-white text-xl text-center'>Quick</h4>
+          </div>
+          </Link>
+          <Link href="/merge">
+          <div className='w-48'>
+            <Image src={Sorting} alt="Sorting" />
+            <h4 className='text-white text-xl text-center'>Merge</h4>
+          </div>
+          </Link>
+          </div>
         </div>
       </main>
     </>
