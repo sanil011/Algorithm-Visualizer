@@ -9,8 +9,6 @@ const springAnim = {
     stiffness: 300
 };
 const Sorting = () => {
-
-    const [menu, setMenu] = useState(true)
     const [dropdown, setDropdown] = useState(false);
     const [screenWidth, setScreenWidth] = useState<number>(600);
     type arrayish = {
@@ -21,7 +19,6 @@ const Sorting = () => {
         sorted: { value: Number, id: String }[],
         speed: number
     }
-    const [speed, setSpeed] = useState("");
     const [state, setState] = useState<arrayish>({
         arr: [],
         method: "Algorithms",
@@ -85,12 +82,12 @@ const Sorting = () => {
 
 
     return (
-        <div className="relative">
+        <div className="relative flex flex-col content-between">
+            <div>
             <nav className="flex flex-row items-center  justify-between px-4 py-2 bg-gray-200 drop-shadow-lg">
-
-                <div className="w-[50%] flex flex-row items-center justify-between">
+                <div className="sm:w-[90%] w-full flex flex-row items-center ">
                     <h1 className="text-3xl mr-8">Quick Sort</h1>
-                    <ul className="flex flex-row justify-between w-[65%]">
+                    <ul className="flex flex-row justify-between sm:w-[45%]">
                         <li className="cursor-pointer py-1 px-4 hover:bg-[#5BC9B1] hover:rounded-md hover:text-white"><Link href="/">Home</Link></li>
                         <li className="cursor-pointer py-1 px-4 hover:bg-[#5BC9B1] hover:rounded-md hover:text-white" onClick={() => createArray()}>Reset</li>
                         <li>
@@ -99,9 +96,7 @@ const Sorting = () => {
                     </ul>
                 </div>
 
-
-
-                <button onClick={(e) => sortFucn(e)} className="p-2 px-4 border-[1px] flex justify-self-end  cursor-pointer rounded-md text-[#5BC9B1] hover:bg-[#5BC9B1] hover:text-white border-[#5BC9B1]">
+                <button onClick={(e) => sortFucn(e)} className="p-2 px-4 border-[1px] sm:flex hidden justify-self-end  cursor-pointer rounded-md text-[#5BC9B1] hover:bg-[#5BC9B1] hover:text-white border-[#5BC9B1]">
                     Sort
                 </button>
             </nav>
@@ -128,7 +123,11 @@ const Sorting = () => {
                         </motion.div>
 
                     ))}
+                </div>
             </div>
+            <button onClick={(e) => sortFucn(e)} className="p-2 px-4 border-[1px] sm:hidden block justify-self-end  cursor-pointer rounded-md text-[#5BC9B1] hover:bg-[#5BC9B1] hover:text-white border-[#5BC9B1]">
+                Sort
+            </button>
         </div>
     )
 }

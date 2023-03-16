@@ -17,12 +17,12 @@ export default function Home() {
   }, []);
 
   const particlesLoaded = useCallback(async (container: Container | undefined) => {
-     console.log(container);
+    console.log(container);
   }, []);
-  
 
 
-  
+
+
   return (
     <>
       <Head>
@@ -31,152 +31,154 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main >
-        
-          <Particles  id="tsparticles" options={{
-            particles: {
-              number: {
-                value: 104,
-                density: {
-                  enable: true,
-                  value_area: 800
-                }
-              },
-              color: {
-                value: "#2ed327"
-              },
-              shape: {
-                type: "circle",
-                stroke: {
-                  width: 0,
-                  color: "#ff0000"
-                },
-                polygon: {
-                  nb_sides: 5
-                },
-                image: {
-                  src: "img/github.svg",
-                  width: 100,
-                  height: 100
-                }
-              },
-              opacity: {
-                value: 0.5,
-                random: false,
-                anim: {
-                  enable: false,
-                  speed: 1,
-                  opacity_min: 0.1,
-                  sync: false
-                }
-              },
-              size: {
-                value: 3,
-                random: true,
-                anim: {
-                  enable: false,
-                  speed: 40,
-                  size_min: 0.1,
-                  sync: false
-                }
-              },
-              line_linked: {
+      <main>
+
+        <Particles id="tsparticles" options={{
+          particles: {
+            number: {
+              value: 104,
+              density: {
                 enable: true,
-                distance: 150,
-                color: "#2ed327",
-                opacity: 0.4,
-                width: 1
-              },
-              move: {
-                enable: true,
-                speed: 2,
-                direction: "none",
-                random: false,
-                straight: false,
-                out_mode: "out",
-                bounce: false,
-                attract: {
-                  enable: false,
-                  rotateX: 3000,
-                  rotateY: 3000
-                }
+                value_area: 800
               }
             },
-            interactivity: {
-              detect_on: "window",
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: "grab"
-                },
-                onclick: {
-                  enable: false,
-                  mode: "push"
-                },
-                resize: true
+            color: {
+              value: "#2ed327"
+            },
+            shape: {
+              type: "circle",
+              stroke: {
+                width: 0,
+                color: "#ff0000"
               },
-              modes: {
-                grab: {
-                  distance: 299.7002997002997,
-                  line_linked: {
-                    opacity: 1
-                  }
-                },
-                bubble: {
-                  distance: 200,
-                  size: 80,
-                  duration: 4,
-                  opacity: 8,
-                  speed: 3
-                },
-                repulse: {
-                  distance: 200,
-                  duration: 0.4
-                },
-                push: {
-                  particles_nb: 4
-                },
-                remove: {
-                  particles_nb: 2
-                }
+              polygon: {
+                nb_sides: 5
+              },
+              image: {
+                src: "img/github.svg",
+                width: 100,
+                height: 100
               }
             },
-            retina_detect: true
+            opacity: {
+              value: 0.5,
+              random: false,
+              anim: {
+                enable: false,
+                speed: 1,
+                opacity_min: 0.1,
+                sync: false
+              }
+            },
+            size: {
+              value: 3,
+              random: true,
+              anim: {
+                enable: false,
+                speed: 40,
+                size_min: 0.1,
+                sync: false
+              }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: "#2ed327",
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 2,
+              direction: "none",
+              random: false,
+              straight: false,
+              out_mode: "out",
+              bounce: false,
+              attract: {
+                enable: false,
+                rotateX: 3000,
+                rotateY: 3000
+              }
+            }
+          },
+          interactivity: {
+            detect_on: "window",
+            events: {
+              onhover: {
+                enable: true,
+                mode: "grab"
+              },
+              onclick: {
+                enable: false,
+                mode: "push"
+              },
+              resize: true
+            },
+            modes: {
+              grab: {
+                distance: 299.7002997002997,
+                line_linked: {
+                  opacity: 1
+                }
+              },
+              bubble: {
+                distance: 200,
+                size: 80,
+                duration: 4,
+                opacity: 8,
+                speed: 3
+              },
+              repulse: {
+                distance: 200,
+                duration: 0.4
+              },
+              push: {
+                particles_nb: 4
+              },
+              remove: {
+                particles_nb: 2
+              }
+            }
+          },
+          retina_detect: true
         }} init={particlesInit} loaded={particlesLoaded} />
-        <div className='bg-black h-[100vh] flex flex-wrap flex-col justify-center content-center gap-6'>
+
+        <div className='bg-black min-h-screen p-8  flex flex-wrap flex-col justify-center content-center gap-6'>
           <Analytics style={{ fill: "#2ed327", height: "6em" }} />
-          
+
           <div className='text-center text-5xl'>
-            <h1 className='text-white tracking-widest' style={{ fontFamily:"Anurati, sans-serif"}}>ALGORITHM</h1>
+            <h1 className='text-white tracking-widest' style={{ fontFamily: "Anurati, sans-serif" }}>ALGORITHM</h1>
             <h1 className='text-[#2ed327] tracking-widest' style={{ fontFamily: "Anurati, sans-serif" }}>VISUALIZER</h1>
           </div>
 
-          <div className='w-2/3'>
-            <p className="text-white text-center text-lg tracking-wide">
+          <div className='sm:w-2/3 w-full flex  flex-row sm:mx-auto mx-4  '>
+            <p className="text-white sm:text-center  text-lg tracking-wide">
               Algorithm Visualizer is an interactive online platform that visualizes algorithms from code.
               Currently these include Sorting Algorithms.
               More Algorithms will be coming soon!!
             </p>
           </div>
-          <div className='flex justify-between'>
-          <Link href="/selection">
-          <div className='w-48'>
-            <Image src={Sorting} alt="Sorting" />
-            <h4 className='text-white text-xl text-center'>Selection</h4>
-          </div>
-          </Link>
-          <Link href="/quick">
-          <div className='w-48'>
-            <Image src={Sorting} alt="Sorting" />
-            <h4 className='text-white text-xl text-center'>Quick</h4>
-          </div>
-          </Link>
-          <Link href="/merge">
-          <div className='w-48'>
-            <Image src={Sorting} alt="Sorting" />
-            <h4 className='text-white text-xl text-center'>Merge</h4>
-          </div>
-          </Link>
+
+          <div className='flex justify-center items-center gap-4 flex-wrap sm:justify-between '>
+            <Link href="/selection">
+              <div className='w-48'>
+                <Image src={Sorting} alt="Sorting" />
+                <h4 className='text-white text-xl text-center'>Selection</h4>
+              </div>
+            </Link>
+            <Link href="/quick">
+              <div className='w-48'>
+                <Image src={Sorting} alt="Sorting" />
+                <h4 className='text-white text-xl text-center'>Quick</h4>
+              </div>
+            </Link>
+            <Link href="/merge">
+              <div className='w-48'>
+                <Image src={Sorting} alt="Sorting" />
+                <h4 className='text-white text-xl text-center'>Merge</h4>
+              </div>
+            </Link>
           </div>
         </div>
       </main>

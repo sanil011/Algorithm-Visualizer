@@ -2,14 +2,13 @@ import Link from "next/link"
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import MergeSort from "../algoritm/merge";
+
 const springAnim = {
     type: "spring",
     damping: 20,
     stiffness: 300
 };
 const Sorting = () => {
-
-    const [menu, setMenu] = useState(true)
     const [dropdown, setDropdown] = useState(false);
     const [screenWidth, setScreenWidth] = useState<number>(600);
     type arrayish = {
@@ -20,7 +19,6 @@ const Sorting = () => {
         sorted: { value: Number, id: String }[],
         speed: number
     }
-    const [speed, setSpeed] = useState("");
     const [state, setState] = useState<arrayish>({
         arr: [],
         method: "Algorithms",
@@ -84,50 +82,52 @@ const Sorting = () => {
 
 
     return (
-        <div className="relative">
-            <nav className="flex flex-row items-center  justify-between px-4 py-2 bg-gray-200 drop-shadow-lg">
+        <div className="relative flex flex-col content-between">
+            <div>
+                <nav className="flex flex-row items-center  justify-between px-4 py-2 bg-gray-200 drop-shadow-lg">
+                    <div className="sm:w-[90%] w-full flex flex-row items-center ">
+                        <h1 className="text-3xl sm:mr-8 mr-3">Merge Sort</h1>
+                        <ul className="flex flex-row justify-between sm:w-[45%]">
+                            <li className="cursor-pointer py-1 px-4 hover:bg-[#5BC9B1] hover:rounded-md hover:text-white"><Link href="/">Home</Link></li>
+                            <li className="cursor-pointer py-1 px-4 hover:bg-[#5BC9B1] hover:rounded-md hover:text-white" onClick={() => createArray()}>Reset</li>
+                            <li>
+                                <h1 className="cursor-pointer py-1 px-4 hover:bg-[#5BC9B1] hover:rounded-md hover:text-white" onClick={() => setDropdown(!dropdown)}>Controls</h1>
+                            </li>
+                        </ul>
+                    </div>
 
-                <div className="w-[50%] flex flex-row items-center justify-between">
-                    <h1 className="text-3xl mr-8">Merge Sort</h1>
-                    <ul className="flex flex-row justify-between w-[65%]">
-                        <li className="cursor-pointer py-1 px-4 hover:bg-[#5BC9B1] hover:rounded-md hover:text-white"><Link href="/">Home</Link></li>
-                        <li className="cursor-pointer py-1 px-4 hover:bg-[#5BC9B1] hover:rounded-md hover:text-white" onClick={() => createArray()}>Reset</li>
-                        <li>
-                            <h1 className="cursor-pointer py-1 px-4 hover:bg-[#5BC9B1] hover:rounded-md hover:text-white" onClick={() => setDropdown(!dropdown)}>Controls</h1>
-                        </li>
-                    </ul>
+                    <button onClick={(e) => sortFucn(e)} className="p-2 px-4 border-[1px] sm:flex hidden justify-self-end  cursor-pointer rounded-md text-[#5BC9B1] hover:bg-[#5BC9B1] hover:text-white border-[#5BC9B1]">
+                        Sort
+                    </button>
+                </nav>
+                <div className={` ${dropdown ? "block" : "hidden"} absolute left-[42%] z-10 bg-white p-4`}>
+                    <li className="flex flex-col">
+                        <input type="range" min="100" max="1000" onChange={(e) => handleSpeed(e)} defaultValue={"500"} />
+                        <a>Increase Speed</a>
+                        <input type="range" min="2" onChange={(e) => changeArray(e)} max={Math.floor(screenWidth / 50)} defaultValue={Math.floor((screenWidth / 50) / 2)} />
+                        <a>Increase Array size</a>
+                    </li>
                 </div>
+                <div className=" flex justify-center text-center" onClick={() => setDropdown(false)} style={{ margin: "20px" }}>
+                    {
+                        (state.arr.map((element: any, index: number) =>
+                            <motion.div
+                                key={element.id}
+                                layout transition={springAnim}
+                                className={`pt-2 inline-block text-white w-10 ml-2 bg-[#5bc9b1] ${element.style}`}
+                                id={element.id}
+                                style={{ height: element.value * 3, order: index }}
+                            >
 
+                                {element.value}
+                            </motion.div>
 
-
-                <button onClick={(e) => sortFucn(e)} className="p-2 px-4 border-[1px] flex justify-self-end  cursor-pointer rounded-md text-[#5BC9B1] hover:bg-[#5BC9B1] hover:text-white border-[#5BC9B1]">
-                    Sort
-                </button>
-            </nav>
-            <div className={` ${dropdown ? "block" : "hidden"} absolute left-[42%] z-10 bg-white p-4`}>
-                <li className="flex flex-col">
-                    <input type="range" min="100" max="1000" onChange={(e) => handleSpeed(e)} defaultValue={"500"} />
-                    <a>Increase Speed</a>
-                    <input type="range" min="2" onChange={(e) => changeArray(e)} max={Math.floor(screenWidth / 50)} defaultValue={Math.floor((screenWidth / 50) / 2)} />
-                    <a>Increase Array size</a>
-                </li>
+                        ))}
+                </div>
             </div>
-            <div className=" flex justify-center text-center" onClick={() => setDropdown(false)} style={{ margin: "20px" }}>
-                {
-                    (state.arr.map((element: any, index: number) =>
-                        <motion.div
-                            key={element.id}
-                            layout transition={springAnim}
-                            className={`pt-2 inline-block text-white w-10 ml-2 bg-[#5bc9b1] ${element.style}`}
-                            id={element.id}
-                            style={{ height: element.value * 3, order: index }}
-                        >
-
-                            {element.value}
-                        </motion.div>
-
-                    ))}
-            </div>
+            <button onClick={(e) => sortFucn(e)} className="p-2 px-4 border-[1px] sm:hidden block justify-self-end  cursor-pointer rounded-md text-[#5BC9B1] hover:bg-[#5BC9B1] hover:text-white border-[#5BC9B1]">
+                Sort
+            </button>
         </div>
     )
 }
